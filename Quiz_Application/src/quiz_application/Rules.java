@@ -14,7 +14,7 @@ public class Rules extends JFrame implements ActionListener{
         getContentPane().setBackground(Color.WHITE);
         setLayout(null);
         
-        JLabel heading = new JLabel("Welcome " + name + " to Simple Minds");
+        JLabel heading = new JLabel("Welcome " + name + " to Java Quiz");
         heading.setBounds(50, 20, 700, 30);
         heading.setFont(new Font("Viner Hand ITC", Font.BOLD, 28));
         heading.setForeground(new Color(30, 144, 254));
@@ -25,14 +25,15 @@ public class Rules extends JFrame implements ActionListener{
         rules.setFont(new Font("Tahoma", Font.PLAIN, 16));
         rules.setText(
             "<html>"+ 
-                "1. You are trained to be a programmer and not a story teller, answer point to point" + "<br><br>" +
-                "2. Do not unnecessarily smile at the person sitting next to you, they may also not know the answer" + "<br><br>" +
-                "3. You may have lot of options in life but here all the questions are compulsory" + "<br><br>" +
-                "4. Crying is allowed but please do so quietly." + "<br><br>" +
-                "5. Only a fool asks and a wise answers (Be wise, not otherwise)" + "<br><br>" +
-                "6. Do not get nervous if your friend is answering more questions, may be he/she is doing Jai Mata Di" + "<br><br>" +
+                  
+                "1. You  must have some java knowledge fundamental.." + "<br><br>" +
+                "2. Do not think like that everyone know better then you.." + "<br><br>" +
+                "3. You may have unnecessary option you dont have to click that.." + "<br><br>" +
+                "4. Please try oncee don't skip the test." + "<br><br>" +
+                "5. Make your own answer ,during test donnot mak noise (Be wise, not otherwise)" + "<br><br>" +
+                "6. for each correct ans you will get 10 marks each" + "<br><br>" +
                 "7. Brace yourself, this paper is not for the faint hearted" + "<br><br>" +
-                "8. May you know more than what John Snow knows, Good Luck" + "<br><br>" +
+                "8. May you know more than what Anjan Kumar Das knows, Good Luck" + "<br><br>" +
             "<html>"
         );
         add(rules);
