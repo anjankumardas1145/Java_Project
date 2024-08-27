@@ -2,11 +2,13 @@ package bank.management.system;
 import javax.swing.*;
 import java.awt.*;
 import java.util.Random;
+import java .awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import com.toedter.calendar.JDateChooser;// importing the package form internet for data of birth
 
 
-public class Signup extends JFrame{
- JRadioButton r1,r2,m1,m2,m3;
+public class Signup extends JFrame implements ActionListener{
+ JRadioButton r1,r2,r3,m1,m2,m3;
  JButton next;
 JTextField textName,textFName,textMName,textEmail,textMs,textAdd,textCT,textPin,textST;
 JDateChooser dateChoser;
@@ -41,7 +43,7 @@ JDateChooser dateChoser;
         label3.setFont(new Font("Raleway",Font.BOLD,22));
         add(label3);
 //for name
-        JLabel lablename=new JLabel("Enter tour name:");
+        JLabel lablename=new JLabel("Enter your name:");
         lablename.setBounds(100,170,600,20);
         lablename.setFont(new Font("Raleway",Font.BOLD,20));
         add(lablename);
@@ -106,10 +108,18 @@ JDateChooser dateChoser;
      r2.setFont(new Font("Raleway",Font.BOLD,14));
      r2.setBounds(400,300,90,30);
      add(r2);
+
+     r3=new JRadioButton("Others");
+     r3.setBackground(new Color(222,255,228));
+     r3.setFont(new Font("Raleway",Font.BOLD,14));
+     r3.setBounds(490,300,90,30);
+     add(r3);
+
      //the below part is only for chose only one button at a time ...,if i dont  not write this part then we can select both button at atime
      ButtonGroup btng=new ButtonGroup();
      btng.add(r1);
      btng.add(r2);
+     btng.add(r3);
 //for Email
      JLabel LabelEmail=new JLabel("Email Address:");
      LabelEmail.setBounds(100,330,300,30);
@@ -197,6 +207,7 @@ JDateChooser dateChoser;
      next.setBounds(626,540,90,30);
      next.setBackground(Color.BLUE);
      next.setForeground(Color.WHITE);
+     next.addActionListener(this);
      add(next);
 
 
@@ -205,6 +216,51 @@ JDateChooser dateChoser;
         setSize(850,800);
         setLocation(360,40);
         setVisible(true);
+    }
+    public void actionPerformed(ActionEvent e){
+     String formno=first;
+     String name=textName.getText();
+     String fname=textFName.getText();
+     String mname=textMName.getText();
+     String dob=((JTextField)dateChoser.getDateEditor().getUiComponent()).getText();//little bit confusing but interestiong
+String gender=null;
+if(r1.isSelected()){
+ gender="Male";
+}else if(r2.isSelected()){
+ gender="female";
+}else if(r3.isSelected()){
+ gender="others";
+}
+String email=textEmail.getText();
+String maritial=null;
+if(m1.isSelected()){
+ maritial="Married";
+}else if(m2.isSelected()){
+ maritial="Unmarried";
+
+}else if(m3.isSelected()){
+ maritial="want to marry";
+
+}
+//
+     String address=textAdd.getText();
+String city=textCT.getText();
+String pincode=textPin.getText();
+String state=textST.getText();
+
+try{
+ if(textName.getText().equals(" ")){
+  JOptionPane.showMessageDialog(null,"Fill all the fields");
+ }else {
+  Connect con1 = new Connect();
+  String Query = " insert into signup(form_no, name, father_name, mother_name,DOB, gender, email, martial_status, address, city, pincode, state) values('" + formno + " ','" + name + " ' ,'" + fname + " ' ,'" + mname + " ','" + dob + " ','" + gender + " ','" + email + " ','" + maritial + " ','" + address + " ','" + city + " ','" + pincode + " ','" + state + " ')";
+  con1.ss.executeUpdate(Query);
+  new Signup2();//then it will go to the Signup2 class
+  setVisible(true);
+ }
+}catch(Exception E){
+ System.out.println(E.getMessage());
+}
     }
     public static void main(String[] args) {
        new Signup();
