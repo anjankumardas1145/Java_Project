@@ -116,7 +116,7 @@ public class LoginPage extends JFrame {
                 l4.setText("The addition of the numbers is: " + c);
             } catch (Exception p) {
                 System.out.println(p.getMessage());
-                l4.setText("Please enter valid numbers i");
+                l4.setText("Please enter valid numbers");
             }
         }
     }
